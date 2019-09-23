@@ -1,6 +1,7 @@
 package psoft.lab02.entities.disciplina;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,14 +10,14 @@ import java.util.Objects;
 public class Disciplina implements Serializable {
 
     @Id
+    @GeneratedValue
     private long id;
     private String nome;
     private Double nota;
     private String comentarios;
     private Integer likes;
 
-    public Disciplina(long id, String nome, Double nota, String comentarios, Integer likes){
-        this.id = id;
+    public Disciplina(String nome, Double nota, String comentarios, Integer likes){
         this.nome = nome;
         this.nota = nota;
         this.comentarios = comentarios;

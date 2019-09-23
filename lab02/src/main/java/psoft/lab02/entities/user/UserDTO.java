@@ -1,27 +1,13 @@
 package psoft.lab02.entities.user;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+public class UserDTO {
 
-public class User {
-
-    @Id
-    @GeneratedValue
-    private Long id;
     private String email;
     private String password;
 
-    public User(String email, String password){
+    public UserDTO(String email, String password){
         this.email = email;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getEmail() {

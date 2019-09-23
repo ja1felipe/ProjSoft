@@ -7,5 +7,5 @@ import psoft.lab02.entities.disciplina.Disciplina;
 import java.io.Serializable;
 
 @Repository
-public interface DisciplinaRepo<ID, T extends Serializable> extends JpaRepository<Disciplina, Long> {
+public interface DisciplinaRepo<T, ID extends Serializable> extends JpaRepository<Disciplina, Long> {
 }

@@ -49,9 +49,4 @@ public class DisciplinaService {
         return disciplinaDAO.findById(id).get();
     }
 
-    public List<Disciplina> getRankDisciplinasNotas() {
-    }
-
-    public List<Disciplina> getRankDisciplinasLikes() {
-    }
 }
