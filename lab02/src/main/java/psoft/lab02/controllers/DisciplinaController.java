@@ -9,6 +9,7 @@ import psoft.lab02.entities.disciplina.DisciplinaNota;
 import psoft.lab02.services.DisciplinaService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class DisciplinaController {
@@ -26,25 +27,25 @@ public class DisciplinaController {
     }
 
     @GetMapping("api/disciplinas/{id}")
-    public ResponseEntity<Disciplina> getOneDisciplina(@RequestParam Long id){
+    public ResponseEntity<Disciplina> getOneDisciplina(@PathVariable(name="id") Long id){
         Disciplina d = discService.getOneDisciplina(id);
         return new ResponseEntity<>(d, HttpStatus.OK);
     }
 
     @PutMapping("api/disciplinas/{id}/likes")
-    public ResponseEntity<Disciplina> addLike(@RequestParam Long id){
+    public ResponseEntity<Disciplina> addLike(@PathVariable(name="id") Long id){
         Disciplina d = discService.addLike(id);
         return new ResponseEntity<>(d, HttpStatus.OK);
     }
 
     @PutMapping("api/disciplinas/{id}/nota")
-    public ResponseEntity<Disciplina> updateNota(@RequestParam Long id, @RequestBody DisciplinaNota dto){
+    public ResponseEntity<Disciplina> updateNota(@PathVariable(name="id") Long id, @RequestBody DisciplinaNota dto){
         Disciplina d = discService.updateNota(id, dto.getNota());
         return new ResponseEntity<>(d, HttpStatus.OK);
     }
 
     @PostMapping("api/disciplinas/{id}/comentarios")
-    public ResponseEntity<Disciplina> addComent(@RequestParam Long id, @RequestBody DisciplinaComent dto){
+    public ResponseEntity<Disciplina> addComent(@PathVariable(name="id") Long id, @RequestBody DisciplinaComent dto){
         Disciplina d = discService.addComent(id, dto.getComentarios());
         return new ResponseEntity<>(d, HttpStatus.OK);
     }

@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/auth")
 public class LoginController {
 
     private final String TOKEN_KEY = "chama no baxara lazap";
@@ -22,9 +21,10 @@ public class LoginController {
     private UserService userService;
     private JWTService jwtService;
 
-    public LoginController(UserService usuariosService) {
+    public LoginController(UserService usuariosService, JWTService jwtService) {
         super();
         this.userService = usuariosService;
+        this.jwtService = jwtService;
     }
 
     @PostMapping("v1/auth/login")

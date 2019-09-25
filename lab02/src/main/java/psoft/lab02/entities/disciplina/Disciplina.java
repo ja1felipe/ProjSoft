@@ -1,5 +1,8 @@
 package psoft.lab02.entities.disciplina;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +10,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@AllArgsConstructor
 public class Disciplina implements Serializable {
 
     @Id
@@ -23,6 +27,15 @@ public class Disciplina implements Serializable {
         this.comentarios = comentarios;
         this.likes = likes;
     }
+
+    public Disciplina(@JsonProperty("nome") String nome){
+        this.nome = nome;
+        this.nota = 0.0;
+        this.comentarios = "";
+        this.likes = 0;
+    }
+
+    public Disciplina(){ }
 
     public String getNome() {
         return nome;

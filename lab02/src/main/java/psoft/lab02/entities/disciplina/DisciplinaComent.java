@@ -7,7 +7,7 @@ public class DisciplinaComent {
     public DisciplinaComent(String comentarios){
         this.comentarios = comentarios;
     }
-
+    public DisciplinaComent(){    }
     public String getComentarios() {
         return comentarios;
     }

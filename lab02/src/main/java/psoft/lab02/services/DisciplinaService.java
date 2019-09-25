@@ -1,11 +1,15 @@
 package psoft.lab02.services;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import psoft.lab02.entities.disciplina.Disciplina;
 import psoft.lab02.repositories.DisciplinaRepo;
 
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -18,12 +22,29 @@ public class DisciplinaService {
         this.disciplinaDAO = disciplinaDAO;
     }
 
+    @PostConstruct
+    public void initDisciplina(){
+        if(this.disciplinaDAO.count() == 0) {
+            ObjectMapper mapper = new ObjectMapper();
+            TypeReference<List<Disciplina>> typeReference = new TypeReference<List<Disciplina>>() {
+            };
+            InputStream inputStream = ObjectMapper.class.getResourceAsStream("/json/disciplinas.json");
+            try {
+                List<Disciplina> disciplinas = mapper.readValue(inputStream, typeReference);
+                this.disciplinaDAO.saveAll(disciplinas);
+            } catch (IOException e) {
+                System.out.println("DEU ERRO PORA");
+            }
+        }
+    }
+
     public List<Disciplina> getDisciplinas() {
         return disciplinaDAO.findAll();
     }
 
     public Disciplina getOneDisciplina(Long id) {
-        return disciplinaDAO.findById(id).get();
+        Disciplina d = disciplinaDAO.findById(id).get();
+        return d;
     }
 
     public Disciplina addLike(Long id) {

@@ -7,6 +7,8 @@ public class DisciplinaNota {
     public DisciplinaNota(Double nota){
         this.nota = nota;
     }
+    public DisciplinaNota(){    }
+
 
     public Double getNota() {
         return nota;

@@ -26,6 +26,7 @@ public class UsuarioController {
 
     @PostMapping("v1/usuarios")
     public ResponseEntity<User> addUser(@RequestBody User user){
+        System.out.println(user);
         User u = userService.addUser(user);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }

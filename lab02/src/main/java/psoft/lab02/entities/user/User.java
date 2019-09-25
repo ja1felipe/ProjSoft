@@ -1,27 +1,40 @@
 package psoft.lab02.entities.user;
 
-import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class User {
 
     @Id
-    @GeneratedValue
-    private Long id;
     private String email;
+
+    private String nome;
     private String password;
 
-    public User(String email, String password){
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", nome='" + nome + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public User(String email, String nome, String password){
         this.email = email;
         this.password = password;
+        this.nome = nome;
     }
 
-    public Long getId() {
-        return id;
+    public User(){ }
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
