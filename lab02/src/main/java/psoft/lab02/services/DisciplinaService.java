@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import psoft.lab02.entities.disciplina.Disciplina;
 import psoft.lab02.repositories.DisciplinaRepo;
+import psoft.lab02.util.DisciplinaComparatorLike;
+import psoft.lab02.util.DisciplinaComparatorNota;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -70,4 +72,17 @@ public class DisciplinaService {
         return disciplinaDAO.findById(id).get();
     }
 
+    public List<Disciplina> getRankDisciplinasNotas() {
+        DisciplinaComparatorNota comparador = new DisciplinaComparatorNota();
+        List<Disciplina> d = disciplinaDAO.findAll();
+        d.sort(comparador);
+        return d;
+    }
+
+    public List<Disciplina> getRankDisciplinasLikes() {
+        DisciplinaComparatorLike comparador = new DisciplinaComparatorLike();
+        List<Disciplina> d = disciplinaDAO.findAll();
+        d.sort(comparador);
+        return d;
+    }
 }

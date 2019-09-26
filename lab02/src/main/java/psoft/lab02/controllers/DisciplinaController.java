@@ -50,15 +50,15 @@ public class DisciplinaController {
         return new ResponseEntity<>(d, HttpStatus.OK);
     }
 
-//    @GetMapping("api/disciplinas/ranking/notas")
-//    public ResponseEntity<List<Disciplina>> getRankDisciplinasNotas(){
-//        List<Disciplina> disciplinas = discService.getRankDisciplinasNotas();
-//        return new ResponseEntity<>(disciplinas, HttpStatus.OK);
-//    }
+    @GetMapping("api/disciplinas/ranking/notas")
+    public ResponseEntity<List<Disciplina>> getRankDisciplinasNotas(){
+        List<Disciplina> disciplinas = discService.getRankDisciplinasNotas();
+        return new ResponseEntity<>(disciplinas, HttpStatus.OK);
+    }
 
-//    @GetMapping("api/disciplinas/ranking/likes")
-//    public ResponseEntity<List<Disciplina>> getRankDisciplinasLikes(){
-//        List<Disciplina> disciplinas = discService.getRankDisciplinasLikes();
-//        return new ResponseEntity<>(disciplinas, HttpStatus.OK);
-//    }
+    @GetMapping("api/disciplinas/ranking/likes")
+    public ResponseEntity<List<Disciplina>> getRankDisciplinasLikes(){
+        List<Disciplina> disciplinas = discService.getRankDisciplinasLikes();
+        return new ResponseEntity<>(disciplinas, HttpStatus.OK);
+    }
 }
