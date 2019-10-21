@@ -18,6 +18,14 @@ class Disciplina {
     get_id(){
         return this._id;
     }
+
+    get_creditos(){
+        return this._creditos;
+    }
+
+    get_pre(){
+        return this._pre;
+    }
 }
 
 class Turma{
