@@ -114,7 +114,7 @@ function Estudante(matricula, nome, email, cpf, url){
 
 function Professor(matricula, nome, email, cpf, url){
     let professor = new Pessoa(matricula, nome, email, cpf, url);
-    professor.matricula = (turma) => professor.professorurma().push(turma)
+    professor.aloca_turma = (turma) => professor.get_turma().push(turma)
     return professor;
 }
 
