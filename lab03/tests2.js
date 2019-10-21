@@ -21,24 +21,24 @@ describe("factory Disciplina", function () {
     });
 
     it("deve reter os dados de inicialização", function () {
-        assert.equal("prog1", d0.id());
+        assert.equal("prog1", d0.get_id());
         assert.equal("Programação 1", d0.get_nome());
-        assert.equal(4, d0.creditos);
-        assert.deepEqual([], d0.pre_requisitos);
+        assert.equal(4, d0.get_creditos());
+        assert.deepEqual([], d0.get_pre());
     });
 
     it("deve permitir atualização de nome", function () {
         d0.set_nome("Programação de Computadores I");
-        assert.equal("prog1", d0.id());
+        assert.equal("prog1", d0.get_id());
         assert.equal("Programação de Computadores I", d0.get_nome());
-        assert.deepEqual([], d0.pre_requisitos);
+        assert.deepEqual([], d0.get_pre());
     });
 
     it("nÃ£o deve permitir atualização de id via set_id", function () {
         assert.throws(function () {
             d0.set_id("outro");
         }, TypeError);
-        assert.equal("prog1", d0.id());
+        assert.equal("prog1", d0.get_id());
     });
 });
 
@@ -135,10 +135,10 @@ describe("factory Professor", function () {
     });
 
     it("deve permitir alocar turmas ao professor", function () {
-        d0 = disciplina("prog1", "Programação 1", 4, []);
-        d1 = disciplina("prog2", "Programação 2", 4, []);
-        t0 = turma(d0, "4");
-        t1 = turma(d1, "4");
+        d0 = new disciplina("prog1", "Programação 1", 4, []);
+        d1 = new disciplina("prog2", "Programação 2", 4, []);
+        t0 = new turma(d0, "4");
+        t1 = new turma(d1, "4");
         p0.aloca_turma(t0);
         p0.aloca_turma(t1);
         assert.deepEqual(p0.turmas("4"), [t0, t1]);
@@ -212,10 +212,10 @@ describe("factory Estudante", function () {
     });
 
     it("deve permitir alocar turmas ao estudante", function () {
-        d0 = disciplina("prog1", "Programação 1", 4, []);
-        d1 = disciplina("prog2", "Programação 2", 4, []);
-        t0 = turma(e0, "4");
-        t1 = turma(e1, "4");
+        d0 = new disciplina("prog1", "Programação 1", 4, []);
+        d1 = new disciplina("prog2", "Programação 2", 4, []);
+        t0 = new turma(e0, "4");
+        t1 = new turma(e1, "4");
         e0.aloca_turma(t0);
         e0.aloca_turma(t1);
         assert.deepEqual(e0.turmas("4"), [t0, t1]);
